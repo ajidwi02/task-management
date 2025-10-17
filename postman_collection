@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "eae13bc1-c628-45d3-9a4a-c7d9ce9bf3ac",
+		"name": "Task-Management-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Budi Santoso\",\r\n  \"username\": \"budisan\",\r\n  \"email\": \"budi.santoso@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"budi.santoso@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Task User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYnVkaS5zYW50b3NvQGV4YW1wbGUuY29tIiwibmFtZSI6IkJ1ZGkgU2FudG9zbyIsImlhdCI6MTc2MDY0NTk3MywiZXhwIjoxNzYwNjQ5NTczfQ.IQUQY-aAUc3f8zSLZdXV056zmQw77vKVbXWkims6Gf0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Belajar Express JS Middleware\",\r\n    \"description\": \"Memahami cara kerja middleware untuk proteksi rute.\",\r\n    \"status\": \"In Progress\",\r\n    \"deadline\": \"2025-10-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYnVkaS5zYW50b3NvQGV4YW1wbGUuY29tIiwibmFtZSI6IkJ1ZGkgU2FudG9zbyIsImlhdCI6MTc2MDY0NTk3MywiZXhwIjoxNzYwNjQ5NTczfQ.IQUQY-aAUc3f8zSLZdXV056zmQw77vKVbXWkims6Gf0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"SELESAI - Belajar Express JS Middleware\",\r\n    \"description\": \"Sudah paham cara kerja middleware untuk proteksi rute.\",\r\n    \"status\": \"Done\",\r\n    \"deadline\": \"2025-10-18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYnVkaS5zYW50b3NvQGV4YW1wbGUuY29tIiwibmFtZSI6IkJ1ZGkgU2FudG9zbyIsImlhdCI6MTc2MDY0NTk3MywiZXhwIjoxNzYwNjQ5NTczfQ.IQUQY-aAUc3f8zSLZdXV056zmQw77vKVbXWkims6Gf0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
