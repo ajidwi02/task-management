@@ -3,7 +3,7 @@ import Layout from "../components/layout/Layout";
 import TaskFilter from "../components/tasks/TaskFilter";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
-import Modal from "../components/common/Modal";
+import Modal from "../components/common/Modals";
 import Button from "../components/common/Button";
 import { taskService } from "../services/taskService";
 import { toast } from "react-toastify";
