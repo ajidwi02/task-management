@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.VITE_BASE_URL,
     credentials: true,
   })
 );
