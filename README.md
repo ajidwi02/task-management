@@ -16,75 +16,58 @@ This app provides core features for managing tasks efficiently, including authen
 
 ---
 
-## Installation & Setup
+## Installation & Setup (Using Docker Compose)
 
-### Backend Setup
+Metode ini adalah cara yang direkomendasikan untuk menjalankan aplikasi karena mengelola _frontend_, _backend_, dan _database_ secara otomatis dalam kontainer terisolasi.
 
-1. **Database Configuration**
+### Prerequisites
 
-   - Import the provided `db.sql` file into your MySQL database.
-   - Create a `.env` file in the backend root directory using the provided `.env.example` as a reference.  
-     Example:
-     ```env
-     DB_HOST=localhost
-     DB_USER=root
-     DB_PASSWORD=
-     DB_NAME=task_management
-     JWT_SECRET=your_secret_key
-     ```
+- **Docker**: Pastikan Docker Engine dan Docker Compose sudah terinstal di sistem Anda. Anda bisa mengunduhnya dari [situs resmi Docker](https://www.docker.com/products/docker-desktop/).
+- **Git**: Untuk mengkloning _repository_.
 
-2. **Install Dependencies**
+### Steps
 
-   ```bash
-   npm install
-   ```
+1.  **Clone Repository:**
+    Buka terminal atau _command prompt_ Anda dan jalankan perintah berikut:
 
-3. **Run the Server**
+    ```bash
+    git clone [https://github.com/ajidwi02/task-management.git](https://github.com/ajidwi02/task-management.git)
+    cd task-management
+    ```
 
-   ```bash
-   npm start
-   ```
+2.  **Pastikan File `db-tm.sql` Ada:**
+    File ini berisi skema dan data awal _database_. Pastikan file `db-tm.sql` berada di _root_ direktori proyek Anda. File ini akan secara otomatis digunakan oleh Docker Compose untuk menginisialisasi _database_.
 
-   The backend should now be running at:
+3.  **Jalankan dengan Docker Compose:**
+    Dari _root_ direktori proyek (`task-management`), jalankan perintah:
 
-   ```
-   http://localhost:3000
-   ```
+    ```bash
+    docker-compose up --build -d
+    ```
 
-   You should see:
+    - `--build`: Membangun _image_ Docker untuk _frontend_ dan _backend_ jika belum ada atau jika `Dockerfile` berubah.
+    - `-d`: Menjalankan kontainer di _background_ (_detached mode_).
 
-   ```
-   Server is running at http://localhost:3000
-   Database connected!
-   ```
+    Tunggu beberapa saat hingga semua kontainer (_frontend_, _backend_, _db_) selesai dibangun dan dimulai. Proses inisialisasi _database_ mungkin memerlukan waktu sekitar 30 detik hingga 1 menit saat pertama kali dijalankan.
+
+4.  **Akses Aplikasi:**
+
+    - **Frontend**: Buka _browser_ Anda dan akses `http://localhost:5173`.
+    - **Backend API**: _Base URL_ API adalah `http://localhost:3000/api`.
+
+5.  **Menghentikan Aplikasi:**
+    Untuk menghentikan semua kontainer, jalankan perintah berikut dari _root_ direktori proyek:
+    ```bash
+    docker-compose down
+    ```
+    Jika Anda ingin menghapus _volume database_ juga (menghapus semua data), gunakan:
+    ```bash
+    docker-compose down -v
+    ```
 
 ---
 
-### Frontend Setup
-
-1. **Install Dependencies**
-
-   ```bash
-   npm install
-   ```
-
-2. **Create `.env` File**
-
-   ```env
-   VITE_API_URL=http://localhost:3000
-   ```
-
-3. **Run the Application**
-
-   ```bash
-   npm run dev
-   ```
-
-   The frontend will run at:
-
-   ```
-   http://localhost:5173
-   ```
+_Catatan: Konfigurasi database seperti host (`db`), user (`user`), password (`user`), dan nama database (`db-tm`) sudah diatur di dalam file `docker-compose.yaml` dan tidak perlu lagi diatur melalui file `.env` saat menjalankan via Docker Compose_. _File `.dockerignore` juga sudah ditambahkan untuk optimasi build Docker_.
 
 ---
 
